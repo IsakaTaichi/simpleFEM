@@ -58,5 +58,6 @@ fem.calc_fem()
 結果を描画します。
 引数aに描画の倍率を設定します。
 ```python
+![Image](fem2.png)
 fem.dsp_result(a=10**4) #変位倍率
 ```
