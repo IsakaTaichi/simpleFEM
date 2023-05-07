@@ -53,7 +53,7 @@ fem.calc_fem()
 ```
 変位がここに格納されています。
 ```python
-#print(fem.u)
+print(fem.u)
 ```
 結果を描画します。
 引数aに描画の倍率を設定します。
