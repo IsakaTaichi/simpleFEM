@@ -4,10 +4,10 @@
 
 ## 必要なライブラリのインポート
 
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as pat
-import simpleFEM
+import numpy as np  
+import matplotlib.pyplot as plt  
+import matplotlib.patches as pat  
+import simpleFEM  
 
 ## はじめに
 
