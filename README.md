@@ -55,7 +55,7 @@ fem.calc_fem()
 ```python
 print(fem.u)
 ```
-```
+
 節点にかかるちからfを表示します。
 ```python
 print(fem.f)
