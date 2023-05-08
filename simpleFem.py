@@ -1,6 +1,6 @@
+
 import numpy as np
 np.set_printoptions(threshold=10000)
-# 要素描画用
 import matplotlib.pyplot as plt
 import matplotlib.patches as pat
 
@@ -19,12 +19,13 @@ class simpleFem:
         self.elem =  np.zeros((self.elm_num,4)) #要素の接点順番
         
         #要素の接点順番
-        elem =  np.zeros((self.elm_num,4)) # 要素数×4点(四角要素)
+        self.elem =  np.zeros((self.elm_num,4)) # 要素数×4点(四角要素)
         youso_num=0
-        for i in range(self.x):#縦節点数
-            for j in range(self.y): #横節点数
+        for i in range(self.y):#縦節点数
+            for j in range(self.x): #横節点数
                 self.elem[youso_num] = [i*(self.x+1)+j+1,i*(self.x+1)+j+2,i*(self.x+1)+j+self.x+3,i*(self.x+1)+j+self.x+2]
                 youso_num+=1
+            
         
     def ux(self,i,ux):
         self.u[2*i] = ux  #y方向の拘束
@@ -131,7 +132,7 @@ class simpleFem:
         #変位
         self.u = KG_inv @ self.f
     
-    def dsp_result(self,a,grid):    
+    def dsp_result(self,a,grid,rate):    
         # 変位表示
         px=[] #変位uxを格納
         py=[] #変位uyを格納
@@ -168,7 +169,6 @@ class simpleFem:
                     plt.plot(pointx,pointy,marker='.',markersize=10,color = "g")
                 
             for i in range(int(self.node_num/self.y)-1):
-            
                 k = (self.x+1)
                 pointx =[]
                 pointy =[]
@@ -183,13 +183,12 @@ class simpleFem:
         Q = np.zeros(self.node_num)
         R = np.zeros(self.node_num)
         for i in range(self.node_num):
-            Q[i]= x[i] +a*px[i]
+            Q[i] = x[i]  +a*px[i]
             R[i] = y[i] +a*py[i]
         for i in range(self.elm_num):
             el = [int(i) for i in self.elem[i]]
             if self.bit[i]==1:
-                b=10
-                p = pat.Polygon(xy = [(Q[el[0]-1]/b, R[el[0]-1]/b), (Q[el[1]-1]/b, R[el[1]-1]/b), (Q[el[2]-1]/b, R[el[2]-1]/b),(Q[el[3]-1]/b, R[el[3]-1]/b)],fc = "lightblue", ec = "gray")
+                p = pat.Polygon(xy = [(Q[el[0]-1]/rate, R[el[0]-1]/rate), (Q[el[1]-1]/rate, R[el[1]-1]/rate), (Q[el[2]-1]/rate, R[el[2]-1]/rate),(Q[el[3]-1]/rate, R[el[3]-1]/rate)],fc = "lightblue", ec = "gray")
                 #p = pat.Polygon(xy = [(x[el[0]-1]/50, y[el[0]-1]/50), (x[el[1]-1]/50, y[el[1]-1]/50), (x[el[2]-1]/50, y[el[2]-1]/50),(x[el[3]-1]/50, y[el[3]-1]/50)],fc = "lightblue", ec = "gray")
             
             ax.add_patch(p)
