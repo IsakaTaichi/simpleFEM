@@ -10,7 +10,7 @@ import matplotlib.patches as pat
 import simpleFEM  
 ```
 ## 使い方
-横方向に5個、縦方向に5個の25個の格子ブロックを作成します。
+例として、横方向に5個、縦方向に5個の25個の格子ブロックを作成します。  
 ```python
 fem = simpleFem([5,5]) # 横30×縦20の格子状の要素を作成
 ```
