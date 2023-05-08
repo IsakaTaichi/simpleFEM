@@ -7,7 +7,7 @@
 import numpy as np  
 import matplotlib.pyplot as plt  
 import matplotlib.patches as pat  
-import simpleFEM  
+import simpleFem #import simpleFem.pyからインポート
 ```
 ## 使い方
 例として、横方向に5個、縦方向に5個の25個の格子ブロックを作成します。  
