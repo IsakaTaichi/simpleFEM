@@ -56,7 +56,7 @@ fem.calc_fem()
 print(fem.u)
 ```
 
-節点にかかるちからfを表示します。
+節点にかかる力fを表示します。
 ```python
 print(fem.f)
 ```
