@@ -142,12 +142,32 @@ class simpleFem:
                 y.append(i)
 
         #グラフ表示
-        #a=10**3 # 表示倍率
+        Q = np.zeros(self.node_num)
+        R = np.zeros(self.node_num)
+        
         for i in range(self.node_num):
-            p1 = x[i]+a*px[i]
-            q1 = y[i]+a*py[i]
-            #plt.plot(x[i],y[i],marker='.',color = "g")
-            #plt.plot(p1,q1,marker='.',color = "r")
+            Q[i] = x[i] +a * px[i]
+            R[i] = y[i] +a * py[i]
+            
+        for i in range(int(self.node_num/self.x)-1): 
+            b=10
+            k = (self.x+1) * i 
+            pointx =[]
+            pointy =[]
+            for j in range(self.x+1):
+                pointx.append(Q[k+j])
+                pointy.append(R[k+j])
+                plt.plot(pointx,pointy,marker='.',markersize=10,color = "g")
+                
+        for i in range(int(self.node_num/self.y)-1):
+            b=10
+            k = (self.x+1)
+            pointx =[]
+            pointy =[]
+            for j in range(self.y+1):
+                pointx.append(Q[k*j+i])
+                pointy.append(R[k*j+i])
+                plt.plot(pointx,pointy,marker='.',markersize=10,color = "g")
     
         # Figureを作成
         fig = plt.figure(figsize=(10, 10))
