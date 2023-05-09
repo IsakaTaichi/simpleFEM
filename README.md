@@ -71,11 +71,12 @@ a=0にすると変位を無視した格子要素が表示されます。
 grid=1を指定すると格子点のグリッドを表示します。　  
 rateは要素の表示範囲の倍率をしていします。  
 ```python
-fem.dsp_result(a=15**4,grid=0,rate=50) #a変位倍率 グリッド表示なし
+fem.dsp_result(a=15**4,grid=1,rate=50) #a変位倍率 グリッド表示なし
 ```
+![Image](fem3.png)
 ![Image](fem2.png)
 ```python
 fem.dsp_result(a=15**4,grid=1,rate=50) #a変位倍率 グリッド表示
 ```
-![Image](fem3.png)
+
 
