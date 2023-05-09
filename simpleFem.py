@@ -128,9 +128,11 @@ class simpleFem:
                 KG[i,i] = 1
         #逆行列
         KG_inv = np.linalg.inv(KG)
-
+        KG_inv = np.linalg.pinv(KG)
+        
         #変位
         self.u = KG_inv @ self.f
+        
     
     def dsp_result(self,a,grid,rate):    
         # 変位表示
